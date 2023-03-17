@@ -11,7 +11,7 @@ public class Event {
     int bookedSeats;
 
     //CONSTRUCTOR
-    public Event(String title, LocalDate date, int totalSeats){
+    public Event(String title, LocalDate date, int totalSeats) throws IllegalArgumentException{
         checkTitle(title);
         checkDate(date);
         checkTotalSeats(totalSeats);
@@ -58,13 +58,13 @@ public class Event {
         return formatter.format(date) + title;
     }
 
-    private void checkTitle(String title){
+    private void checkTitle(String title) throws IllegalArgumentException{
         if (title.trim().isEmpty()){
             throw new IllegalArgumentException("Title can't be empty");
         }
     }
 
-    private void checkDate(LocalDate date){
+    private void checkDate(LocalDate date) throws IllegalArgumentException{
         LocalDate now = LocalDate.now();
 
         if (now.isAfter(date)){
@@ -72,7 +72,7 @@ public class Event {
         }
     }
 
-    private void checkTotalSeats(int seats){
+    private void checkTotalSeats(int seats) throws IllegalArgumentException{
         if (seats <= 0){
             throw new IllegalArgumentException("The total seats can't be minor than zero");
         }
@@ -90,5 +90,9 @@ public class Event {
         checkDate(date);
         checkTotalSeats(bookedSeats);
         bookedSeats--;
+    }
+
+    public int countRemainingSeats(){
+        return totalSeats - bookedSeats;
     }
 }
