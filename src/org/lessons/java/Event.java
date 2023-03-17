@@ -55,11 +55,31 @@ public class Event {
     }
 
     //METHODS
-
-
     @Override
     public String toString() {
-        return getFormattedDate() + title;
+        return getFormattedDate() + " - " + title;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Event event = (Event) o;
+
+        if (getTotalSeats() != event.getTotalSeats()) return false;
+        if (getBookedSeats() != event.getBookedSeats()) return false;
+        if (getTitle() != null ? !getTitle().equals(event.getTitle()) : event.getTitle() != null) return false;
+        return getDate() != null ? getDate().equals(event.getDate()) : event.getDate() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getTitle() != null ? getTitle().hashCode() : 0;
+        result = 31 * result + (getDate() != null ? getDate().hashCode() : 0);
+        result = 31 * result + getTotalSeats();
+        result = 31 * result + getBookedSeats();
+        return result;
     }
 
     private void checkTitle(String title) throws IllegalArgumentException{
