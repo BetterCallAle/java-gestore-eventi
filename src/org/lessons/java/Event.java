@@ -38,6 +38,11 @@ public class Event {
         return bookedSeats;
     }
 
+    public String getFormattedDate(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return formatter.format(date);
+    }
+
     //SETTERS
     public void setTitle(String title) {
         checkTitle(title);
@@ -54,8 +59,7 @@ public class Event {
 
     @Override
     public String toString() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return formatter.format(date) + title;
+        return getFormattedDate() + title;
     }
 
     private void checkTitle(String title) throws IllegalArgumentException{

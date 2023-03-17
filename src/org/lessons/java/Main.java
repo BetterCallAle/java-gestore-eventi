@@ -1,7 +1,9 @@
 package org.lessons.java;
 
+import java.math.BigDecimal;
 import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Scanner;
 
 public class Main {
@@ -118,5 +120,8 @@ public class Main {
         }
 
         scan.close();
+
+        Concert concert = new Concert("Twenty One Pilots Live", LocalDate.now().plusWeeks(3), 3000, LocalTime.of(20, 30), new BigDecimal("30.99"));
+        System.out.println(concert);
     }
 }
