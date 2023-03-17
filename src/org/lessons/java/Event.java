@@ -5,10 +5,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Event {
-    String title;
-    LocalDate date;
-    int totalSeats;
-    int bookedSeats;
+    private String title;
+    private LocalDate date;
+    private int totalSeats;
+    private int bookedSeats;
 
     //CONSTRUCTOR
     public Event(String title, LocalDate date, int totalSeats) throws IllegalArgumentException{
